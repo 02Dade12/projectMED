@@ -3,7 +3,7 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const axios = require("axios");
 require('dotenv').config();
-
+ 
 
 
 // Free 3rd Party API to Alpha Vantage (https://www.alphavantage.co/)
