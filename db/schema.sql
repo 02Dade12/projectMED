@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS stock_users;
+CREATE DATABASE stock_users;
