@@ -7,12 +7,12 @@ const searchData = require('./searchData.json');
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
 
-    User.bulkCreate(userData, {
+    await User.bulkCreate(userData, {
         individualHooks: true,
         returning: true,
     });
 
-    Searches.bulkCreate(searchData);
+    await Searches.bulkCreate(searchData);
 
     process.exit(0);
 };
