@@ -14,11 +14,16 @@ function stockOverview(stockName) {
     .then(
       function (response) {
         console.log(response);
+        // console.log(response.symbol);
+        // console.log(response.name);
+        // console.log(response.description);
+        // console.log(response.country);
+        // console.log(response.sector);
       }
     )
 };
 
-// stocksOverview("now");
+stockOverview("now");
 
 router.get('/', async (req, res) => {
   try {
