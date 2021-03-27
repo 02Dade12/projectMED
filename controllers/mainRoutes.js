@@ -7,12 +7,6 @@ const dotenv = require('dotenv').config();
 
 
 // Free 3rd Party API to Alpha Vantage (https://www.alphavantage.co/)
-const router = require('express').Router();
-// const { User, Searches } = require('../models');
-// const withAuth = require('../utils/auth');
-const axios = require("axios");
-const dotenv = require('dotenv').config();
-
 function stockOverview(stock) {
     axios
       .get("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + stock + "&apikey=" + process.env.API_KEY)

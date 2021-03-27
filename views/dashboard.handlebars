@@ -2,11 +2,13 @@
     <div class="row expanded app-dashboard-top-nav-bar">
         <div class="columns medium-2">
             <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
-            <a class="app-dashboard-logo">Welcome:{{user.name}}</a>
+            <a class="app-dashboard-logo"><img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2014/png/iconmonstr-binoculars-7.png&r=196&g=187&b=192" class="" height="40" width="40" alt="Search"></a>
+            
         </div>
         <div class="columns show-for-medium">
             <div class="app-dashboard-search-bar-container">
                 <input class="app-dashboard-search" type="search" placeholder="Search" id="search">
+                {{!-- <button type="submit" class="primary button expanded search-button"></button> --}}
                 <i class="app-dashboard-search-icon fa fa-search"></i>
             </div>
         </div>
@@ -38,7 +40,7 @@
                     <!--  {{#each Searches as |search|}}
                     <li><a href="#" class="is-active">
                             <i class="large fa fa-institution"></i><span
-                                class="app-dashboard-sidebar-text">Buildings</span>
+                                class="app-dashboard-sidebar-text">{{Name}}</span>
                         </a></li>
                     {{/each}}-->
 
@@ -68,7 +70,7 @@
         </div>
 
         <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
-            <h2 class="text-center">Dashboard</h2>
+            <h2 class="text-center">{{user.name}}'s Dashboard</h2>
 
             <div class="card-info success">
                 <div class="card-info-label">
