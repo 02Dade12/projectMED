@@ -30,7 +30,7 @@
             <ul class="menu simple vertical medium-horizontal">
               <li><a href="/">Home</a></li>
               {{#if logged_in}}
-              <li><a href="/profile">profile</a> </li> |
+              <li><a href="/dashboard">Dashboard</a> </li> |
               <button type="button" id="logout" class="button hollow topbar-responsive-button">logout</button>
               {{else}}
               <li> <a href="/login">login</a></li>
@@ -51,6 +51,8 @@
   </div>
 
   <!-- Render script for logged in users only -->
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
