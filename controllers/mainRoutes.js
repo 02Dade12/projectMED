@@ -7,23 +7,69 @@ const dotenv = require('dotenv').config();
 
 
 // Free 3rd Party API to Alpha Vantage (https://www.alphavantage.co/)
-function stockOverview(stockName) {
-  axios
-    .get("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + stockName + "&apikey=" + process.env.API_KEY)
+const router = require('express').Router();
+// const { User, Searches } = require('../models');
+// const withAuth = require('../utils/auth');
+const axios = require("axios");
+const dotenv = require('dotenv').config();
+
+function stockOverview(stock) {
+    axios
+      .get("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + stock + "&apikey=" + process.env.API_KEY)
+  
+      .then(
+        function (response) {
+        
+          console.log("-----------------------")
+          console.log(response.data);
+          console.log("-----------------------")
+          console.log(response.data.Name);
+          console.log(response.data.Symbol);
+          console.log(response.data.Country);
+          console.log(response.data.Exchange);
+          console.log(response.data.Sector);
+          console.log(response.data.Description);
+          console.log("-----------------------")
+
+          let stockName = response.data.Name;
+          let stockSymbol = response.data.Symbol;
+          let stockCountry = response.data.Country;
+          let stockSector = response.data.Exchange;
+          let stockExchange = response.data.Sector;
+          let stockDescription = response.data.Description;
+
+        }
+      )
+  };
+  
+  stockOverview("now");
+
+  function dailySeries(stock) {
+    axios
+    .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + stock + "&apikey=" + process.env.API_KEY)
 
     .then(
       function (response) {
-        console.log(response);
-        // console.log(response.symbol);
-        // console.log(response.name);
-        // console.log(response.description);
-        // console.log(response.country);
-        // console.log(response.sector);
-      }
-    )
-};
 
-stockOverview("now");
+        console.log("-----------------------")
+        console.log(response.data);
+        console.log("-----------------------")
+        console.log(response.data["Global Quote"]["02. open"]);
+        console.log(response.data["Global Quote"]["03. high"]);
+        console.log(response.data["Global Quote"]["04. low"]);
+        console.log(response.data["Global Quote"]["05. price"]);
+        console.log("-----------------------")
+
+        let stockOpen = response.data["Global Quote"]["02. open"];
+        let stockHigh = response.data["Global Quote"]["03. high"];
+        let stockLow = response.data["Global Quote"]["04. low"];
+        let stockPrice = response.data["Global Quote"]["05. price"];
+
+      }
+    ); 
+  };
+
+  dailySeries('now');
 
 router.get('/', async (req, res) => {
   try {
