@@ -11,7 +11,7 @@ Searches.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        search: {
+        text: {
             type: DataTypes.STRING,
             allowNull: false,
         },
