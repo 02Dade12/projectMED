@@ -1,1 +1,75 @@
-adf
+<div class="app-dashboard shrink-medium">
+    <div class="row expanded app-dashboard-top-nav-bar">
+        <div class="columns medium-2">
+            <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
+            <a class="app-dashboard-logo">Welcome:{{user.name}}</a>
+        </div>
+        <div class="columns show-for-medium">
+            <div class="app-dashboard-search-bar-container">
+                <input class="app-dashboard-search" type="search" placeholder="Search" id="search">
+                <i class="app-dashboard-search-icon fa fa-search"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-dashboard-body off-canvas-wrapper">
+        <div id="app-dashboard-sidebar"
+            class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium"
+            data-off-canvas>
+            <div class="app-dashboard-sidebar-title-area">
+                <div class="app-dashboard-close-sidebar">
+                    <h3 class="app-dashboard-sidebar-block-title">Saved Stocks</h3>
+                    <!-- Close button -->
+                    <button id="close-sidebar" data-app-dashboard-toggle-shrink
+                        class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu"
+                        type="button">
+                        <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-left"></i></a></span>
+                    </button>
+                </div>
+                <div class="app-dashboard-open-sidebar">
+                    <button id="open-sidebar" data-app-dashboard-toggle-shrink
+                        class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu" type="button">
+                        <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-right"></i></a></span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-dashboard-sidebar-inner">
+                <ul class="menu vertical">
+                  <!--  {{#each Searches as |search|}}
+                    <li><a href="#" class="is-active">
+                            <i class="large fa fa-institution"></i><span
+                                class="app-dashboard-sidebar-text">Buildings</span>
+                        </a></li>
+                    {{/each}}-->
+
+                    <li><a href="#" class="is-active">
+                            <i class="large fa fa-institution"></i><span
+                                class="app-dashboard-sidebar-text">Buildings</span>
+                        </a></li>
+                    <li><a>
+                            <i class="large fa fa-industry"></i><span class="app-dashboard-sidebar-text">Industry</span>
+                        </a></li>
+                    <li><a href="#" class="is-active">
+                            <i class="large fa fa-institution"></i><span
+                                class="app-dashboard-sidebar-text">Buildings</span>
+                        </a></li>
+                    <li><a>
+                            <i class="large fa fa-industry"></i><span class="app-dashboard-sidebar-text">Industry</span>
+                        </a></li>
+                    <li><a href="#" class="is-active">
+                            <i class="large fa fa-institution"></i><span
+                                class="app-dashboard-sidebar-text">Buildings</span>
+                        </a></li>
+                    <li><a>
+                            <i class="large fa fa-industry"></i><span class="app-dashboard-sidebar-text">Industry</span>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
+            <h2 class="text-center">Dashboard</h2>
+
+        </div>
+    </div>
+</div>
