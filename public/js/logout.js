@@ -7,7 +7,7 @@ const logout = async () => {
   if (response.ok) {
     document.location.replace('/');
   } else {
-    alert("Please use 8 characters!");
+    alert(response.statusText);
   }
 };
 
