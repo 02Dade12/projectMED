@@ -2,14 +2,19 @@ const router = require('express').Router();
 const { Searches } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
-    const newSearch = await Searches.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
+    const searchData = req.query.stock.trim();
+    console.log(searchData);
 
-    res.status(200).json(newSearch);
+    if (searchData) {
+      let newSearch = await Searches.create({
+        user_id: req.session.user_id,
+        text: searchData,
+      })
+    };
+
+    res.redirect('/dashboard');
   } catch (err) {
     res.status(400).json(err);
   }
@@ -34,5 +39,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 
 module.exports = router;

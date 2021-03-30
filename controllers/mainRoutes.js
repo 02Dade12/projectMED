@@ -4,42 +4,40 @@ const withAuth = require('../utils/auth');
 const axios = require("axios");
 const dotenv = require('dotenv').config();
 
-
-
 // Free 3rd Party API to Alpha Vantage (https://www.alphavantage.co/)
 function stockOverview(stock) {
-    axios
-      .get("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + stock + "&apikey=" + process.env.API_KEY)
-  
-      .then(
-        function (response) {
-        
-          console.log("-----------------------")
-          console.log(response.data);
-          console.log("-----------------------")
-          console.log(response.data.Name);
-          console.log(response.data.Symbol);
-          console.log(response.data.Country);
-          console.log(response.data.Exchange);
-          console.log(response.data.Sector);
-          console.log(response.data.Description);
-          console.log("-----------------------")
+  axios
+    .get("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + stock + "&apikey=" + process.env.API_KEY)
 
-          let stockName = response.data.Name;
-          let stockSymbol = response.data.Symbol;
-          let stockCountry = response.data.Country;
-          let stockSector = response.data.Exchange;
-          let stockExchange = response.data.Sector;
-          let stockDescription = response.data.Description;
+    .then(
+      function (response) {
 
-        }
-      )
-  };
-  
-  stockOverview("now");
+        console.log("-----------------------")
+        console.log(response.data);
+        console.log("-----------------------")
+        console.log(response.data.Name);
+        console.log(response.data.Symbol);
+        console.log(response.data.Country);
+        console.log(response.data.Exchange);
+        console.log(response.data.Sector);
+        console.log(response.data.Description);
+        console.log("-----------------------")
 
-  function dailySeries(stock) {
-    axios
+        let stockName = response.data.Name;
+        let stockSymbol = response.data.Symbol;
+        let stockCountry = response.data.Country;
+        let stockSector = response.data.Exchange;
+        let stockExchange = response.data.Sector;
+        let stockDescription = response.data.Description;
+
+      }
+    ); return
+};
+
+stockOverview("now");
+
+function dailySeries(stock) {
+  axios
     .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + stock + "&apikey=" + process.env.API_KEY)
 
     .then(
@@ -60,10 +58,10 @@ function stockOverview(stock) {
         let stockPrice = response.data["Global Quote"]["05. price"];
 
       }
-    ); 
-  };
+    );
+};
 
-  dailySeries('now');
+dailySeries('now');
 
 router.get('/', async (req, res) => {
   try {
@@ -129,14 +127,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/dashboard');
-    return;
-  }
-
+router.get('/login', withAuth, (req, res) => {
   res.render('login');
 });
+
+
 
 module.exports = router;
