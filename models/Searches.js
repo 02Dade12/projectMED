@@ -36,19 +36,19 @@ Searches.init(
             allowNull: true,
         },
         stock_open: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL(10, 4),
             allowNull: true,
         },
         stock_high: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL(10, 4),
             allowNull: true,
         },
         stock_low: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL(10, 4),
             allowNull: true,
         },
         stock_price: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL(10, 4),
             allowNull: true,
         },
         date_created: {
