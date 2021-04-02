@@ -7,6 +7,33 @@ const searchHist = document.querySelector('.is-active')
 async function newSearchHandler(event) {
   event.preventDefault();
   const searchText = document.querySelector('#search').value.trim();
+  var stockopen = '';
+  var stockhigh = '';
+  var stocklow = '';
+  var stockprice = '';
+  await axios
+    .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + searchText + "&apikey=" + "2V72ME51BOFXRYCJ")
+
+    .then(
+      function (response) {
+
+        console.log("-----------------------")
+        console.log(response.data);
+        console.log("-----------------------")
+        console.log(response.data["Global Quote"]["02. open"]);
+        console.log(response.data["Global Quote"]["03. high"]);
+        console.log(response.data["Global Quote"]["04. low"]);
+        console.log(response.data["Global Quote"]["05. price"]);
+        console.log("-----------------------")
+
+        stockopen = response.data["Global Quote"]["02. open"];
+        stockhigh = response.data["Global Quote"]["03. high"];
+        stocklow = response.data["Global Quote"]["04. low"];
+        stockprice = response.data["Global Quote"]["05. price"];
+
+      }
+    );
+
   await axios
     .get("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + searchText + "&apikey=" + "2V72ME51BOFXRYCJ")
     .then(
@@ -21,6 +48,10 @@ async function newSearchHandler(event) {
               stock_sector: response.data.Sector,
               stock_exchange: response.data.Exchange,
               stock_description: response.data.Description,
+              stock_open: stockopen,
+              stock_high: stockhigh,
+              stock_low: stocklow,
+              stock_price: stockprice,
             }
           ).then(function (response) {
             console.log(response);
@@ -68,29 +99,29 @@ form.addEventListener('submit', newSearchHandler);
 //   .querySelector('.project-list')
 //   .addEventListener('click', delButtonHandler);
 
-          // console.log("-----------------------");
-          // console.log(response.data);
-          // console.log("-----------------------");
-          // console.log(response.data.Name);
-          // console.log(response.data.Symbol);
-          // console.log(response.data.Country);
-          // console.log(response.data.Exchange);
-          // console.log(response.data.Sector);
-          // console.log(response.data.Description);
-          // console.log("-----------------------");
-          // console.log("-----------------------");
-          // console.log(response.data);
-          // console.log("-----------------------");
-          // // console.log(response.data["50DayMovingAverage"]);
-          // // console.log(response.data["52WeekHigh"]);
-          // // console.log(response.data["52WeekLow"]);
-          // // console.log(response.data["200DayMovingAverage"]);
-          // console.log("-----------------------");
+// console.log("-----------------------");
+// console.log(response.data);
+// console.log("-----------------------");
+// console.log(response.data.Name);
+// console.log(response.data.Symbol);
+// console.log(response.data.Country);
+// console.log(response.data.Exchange);
+// console.log(response.data.Sector);
+// console.log(response.data.Description);
+// console.log("-----------------------");
+// console.log("-----------------------");
+// console.log(response.data);
+// console.log("-----------------------");
+// // console.log(response.data["50DayMovingAverage"]);
+// // console.log(response.data["52WeekHigh"]);
+// // console.log(response.data["52WeekLow"]);
+// // console.log(response.data["200DayMovingAverage"]);
+// console.log("-----------------------");
 
-          // // stockopen = response.datalobal["50DayMovingAverage"];
-          // // stockhigh = response.data["52WeekHigh"];
-          // // stocklow = response.data["52WeekLow"];;
-          // // stockprice = response.data["200DayMovingAverage"];
+// // stockopen = response.datalobal["50DayMovingAverage"];
+// // stockhigh = response.data["52WeekHigh"];
+// // stocklow = response.data["52WeekLow"];;
+// // stockprice = response.data["200DayMovingAverage"];
 
 
 // const name = document.querySelector('#project-name').value.trim();
@@ -115,29 +146,29 @@ form.addEventListener('submit', newSearchHandler);
 //   }
 // }
 
- // if (searchText) {
-  //   const stock_name = stockname;
-  //   const stock_symbol = stocksymbol;
-  //   const stock_country = stockcountry;
-  //   const stock_sector = stocksector;
-  //   const stock_exchange = stockexchange;
-  //   const stock_open = stockopen;
-  //   const response = await fetch(`/api/searches`, {
-  //     method: 'POST',
-  //     body: JSON.stringify({ stock_name, stock_symbol, stock_country, stock_sector, stock_exchange, stock_open }),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
+// if (searchText) {
+//   const stock_name = stockname;
+//   const stock_symbol = stocksymbol;
+//   const stock_country = stockcountry;
+//   const stock_sector = stocksector;
+//   const stock_exchange = stockexchange;
+//   const stock_open = stockopen;
+//   const response = await fetch(`/api/searches`, {
+//     method: 'POST',
+//     body: JSON.stringify({ stock_name, stock_symbol, stock_country, stock_sector, stock_exchange, stock_open }),
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   });
 
-  //   if (response.ok) {
-  //     document.location.replace('/dashboard');
-  //   } else {
-  //     alert('Failed to create project');
-  //   }
-  // }
+//   if (response.ok) {
+//     document.location.replace('/dashboard');
+//   } else {
+//     alert('Failed to create project');
+//   }
+// }
 
-  // var stockname = '';
+// var stockname = '';
 // var stocksymbol = '';
 // var stockcountry = '';
 // var stocksector = '';
@@ -164,6 +195,8 @@ async function delButtonHandler(event) {
     }
   }
 }
+
+document.querySelector('.delete-button').addEventListener('click', delButtonHandler);
 
 function dailySeries(stock) {
   axios

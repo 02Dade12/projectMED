@@ -2,7 +2,17 @@ body{
 background-color: rgb(133, 112, 161);
 
 }
-
+/* #history {
+  clear: right;
+  width: 10%;
+  float: left;
+}
+.delete-button {
+  width: 40%;
+  float: right;
+  margin-top: 0%;
+  margin-bottom: 30px;
+} */
 
 .topbar-responsive {
   background: #2c3840;

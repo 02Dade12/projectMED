@@ -1,6 +1,6 @@
 <div class="app-dashboard shrink-medium">
     <div class="row expanded app-dashboard-top-nav-bar">
-        <form class="form new-project-form">
+        <form style="margin-bottom: 3%;" class="form new-project-form">
             <div class="columns medium-2">
                 {{!-- <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button> --}}
                 {{!-- <button type="submit" id="searchBtn" class="app-dashboard-logo"></button> --}}
@@ -9,19 +9,20 @@
                 <div class="app-dashboard-search-bar-container">
                     <input name="stock" class="app-dashboard-search" type="text" placeholder="Search" id="search">
                     {{!-- <button type="submit" class="primary button expanded search-button"></button> --}}
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="primary button expanded search-button">Submit</button>
                     {{!-- <i class="app-dashboard-search-icon fa fa-search"></i> --}}
                 </div>
             </div>
         </form>
     </div>
     <div class="app-dashboard-body off-canvas-wrapper">
+        {{#if searches}}
         <div id="app-dashboard-sidebar"
             class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium"
             data-off-canvas>
             <div class="app-dashboard-sidebar-title-area">
                 <div class="app-dashboard-close-sidebar">
-                    <h3 class="app-dashboard-sidebar-block-title">Saved Stocks</h3>
+                    <h3 class="app-dashboard-sidebar-block-title">Recent Searches</h3>
                     <!-- Close button -->
                     <button id="close-sidebar" data-app-dashboard-toggle-shrink
                         class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu"
@@ -51,14 +52,32 @@
                     {{#each searches as |search|}}
                     <li><a href="#" class="is-active" data-id="{{id}}">
                             <span class="app-dashboard-sidebar-text" id="history">{{stock_symbol}}</span>
-                        </a></li>
+                        </a>
+                    </li>
                     {{/each}}
+                    {{#if searches}}
+                    <button class="button delete-button" data-id="{{id}}">Delete Searches</button>
+                    {{/if}}
                 </ul>
             </div>
         </div>
+        {{/if}}
         <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
             <h2 class="text-center">{{name}}'s Dashboard</h2>
             <div id="res"></div>
+            {{#unless searches}}
+            <div class="card-info success absolute-center">
+                <div class="card-info-label">
+                    <div class="card-info-label-text" id="stockSymbol">
+                        Hello
+                    </div>
+                </div>
+                <div class="card-info-content">
+                    <h3 class="lead" id="stockName">Search a stock</h3>
+                </div>
+            </div>
+            {{/unless}}
+            {{#if searches}}
             {{#each searches as |search|}}
             <div class="card-info success">
                 <div class="card-info-label">
@@ -78,6 +97,7 @@
                 </div>
             </div>
             {{/each}}
+            {{/if}}
         </div>
     </div>
 </div>
