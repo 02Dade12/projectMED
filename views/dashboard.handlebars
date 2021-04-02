@@ -1,28 +1,27 @@
 <div class="app-dashboard shrink-medium">
     <div class="row expanded app-dashboard-top-nav-bar">
-        <form action="/api/searches" method="GET">
+        <form class="form new-project-form">
             <div class="columns medium-2">
                 {{!-- <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button> --}}
                 {{!-- <button type="submit" id="searchBtn" class="app-dashboard-logo"></button> --}}
-
             </div>
             <div class="columns show-for-medium">
                 <div class="app-dashboard-search-bar-container">
                     <input name="stock" class="app-dashboard-search" type="text" placeholder="Search" id="search">
                     {{!-- <button type="submit" class="primary button expanded search-button"></button> --}}
+                    <button type="submit" class="btn btn-primary">Search</button>
                     {{!-- <i class="app-dashboard-search-icon fa fa-search"></i> --}}
                 </div>
             </div>
         </form>
     </div>
-
     <div class="app-dashboard-body off-canvas-wrapper">
         <div id="app-dashboard-sidebar"
             class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium"
             data-off-canvas>
             <div class="app-dashboard-sidebar-title-area">
                 <div class="app-dashboard-close-sidebar">
-                    <h3 class="app-dashboard-sidebar-block-title">Recent Searches</h3>
+                    <h3 class="app-dashboard-sidebar-block-title">Saved Stocks</h3>
                     <!-- Close button -->
                     <button id="close-sidebar" data-app-dashboard-toggle-shrink
                         class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu"
@@ -42,43 +41,44 @@
                 </div>
             </div>
             <div class="app-dashboard-sidebar-inner">
-                <ul class="menu vertical test">
-              
-
-                    {{#each searches as |search|}}
+                <ul class="menu vertical">
+                    <!--  
                     <li><a href="#" class="is-active">
-                            <span class="app-dashboard-sidebar-text" id="history">{{text}}</span>
+                            <i class="large fa fa-institution"></i><span
+                                class="app-dashboard-sidebar-text">{{Name}}</span>
+                        </a></li>
+                    -->
+                    {{#each searches as |search|}}
+                    <li><a href="#" class="is-active" data-id="{{id}}">
+                            <span class="app-dashboard-sidebar-text" id="history">{{stock_symbol}}</span>
                         </a></li>
                     {{/each}}
-   
                 </ul>
             </div>
         </div>
-
         <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
             <h2 class="text-center">{{name}}'s Dashboard</h2>
             <div id="res"></div>
+            {{#each searches as |search|}}
             <div class="card-info success">
                 <div class="card-info-label">
                     <div class="card-info-label-text" id="stockSymbol">
-                      Ticker
+                        {{stock_symbol}}
                     </div>
                 </div>
                 <div class="card-info-content">
-                    <h3 class="lead" id="stockName">Company</h3>
-                   <p id="stockCountry">Country</p>
-                    <p id="stockSector">Exchange</p>
-                    <p id="stockDescription">Description</p>
-                   <p id="stockOpen">Today's Open Price</p>
-                   <p id="stockHigh"> Today's High</p>
-                   <p id="stockLow">Today's Low</p>
-                   <p id="stockPrice">Current Price</p>
+                    <h3 class="lead" id="stockName">Company: {{stock_name}}</h3>
+                    <p id="stockCountry">Country: {{stock_country}}</p>
+                    <p id="stockSector">Exchange: {{stock_sector}}</p>
+                    <p id="stockDescription">Description: {{stock_description}}</p>
+                    <p id="stockOpen">Today's Open Price: {{stock_open}}</p>
+                    <p id="stockHigh"> Today's High: {{stock_high}}</p>
+                    <p id="stockLow">Today's Low: {{stock_low}}</p>
+                    <p id="stockPrice">Current Price: {{stock_price}}</p>
                 </div>
             </div>
-
-
+            {{/each}}
         </div>
     </div>
 </div>
-
 <script src="/js/dashboard.js"></script>
