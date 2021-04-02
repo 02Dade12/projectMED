@@ -32,36 +32,36 @@ async function newSearchHandler(event) {
 }
 // stockOverview("now");
 
-async function newSearchHandlerTwo(event) {
-  event.preventDefault();
-  const searchText = document.querySelector('#search').value.trim();
-  await axios
-    .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + stock + "&apikey=" + "2V72ME51BOFXRYCJ")
-    .then(
-      function (response) {
-        console.log(response);
-        if (response.data.Name) {
-          axios.post('/api/searches',
-            {
-              stock_open: response.data["Global Quote"]["02. open"],
-              stock_high: response.data["Global Quote"]["03. high"],
-              stock_low: response.data["Global Quote"]["04. low"],
-              stock_price: response.data["Global Quote"]["05. price"],
-            }
-          ).then(function (response) {
-            console.log(response);
-            location.reload();
-          })
-        } else { return }
-      }
-    );
-}
+// async function newSearchHandlerTwo(event) {
+//   event.preventDefault();
+//   const searchText = document.querySelector('#search').value.trim();
+//   await axios
+//     .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + stock + "&apikey=" + "2V72ME51BOFXRYCJ")
+//     .then(
+//       function (response) {
+//         console.log(response);
+//         if (response.data.Name) {
+//           axios.post('/api/searches',
+//             {
+//               stock_open: response.data["Global Quote"]["02. open"],
+//               stock_high: response.data["Global Quote"]["03. high"],
+//               stock_low: response.data["Global Quote"]["04. low"],
+//               stock_price: response.data["Global Quote"]["05. price"],
+//             }
+//           ).then(function (response) {
+//             console.log(response);
+//             location.reload();
+//           })
+//         } else { return }
+//       }
+//     );
+// }
 
 
 
 
 form.addEventListener('submit', newSearchHandler);
-form.addEventListener('submit', newSearchHandlerTwo);
+// form.addEventListener('submit', newSearchHandlerTwo);
 
 
 // document
