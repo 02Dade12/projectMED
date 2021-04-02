@@ -12,7 +12,7 @@ async function newSearchHandler(event) {
   var stocklow = '';
   var stockprice = '';
   await axios
-    .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + searchText + "&apikey=" + "2V72ME51BOFXRYCJ")
+    .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + searchText + "&apikey=" + "FMDXZ15JN39YTSUV")
 
     .then(
       function (response) {
@@ -35,7 +35,7 @@ async function newSearchHandler(event) {
     );
 
   await axios
-    .get("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + searchText + "&apikey=" + "2V72ME51BOFXRYCJ")
+    .get("https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + searchText + "&apikey=" + "FMDXZ15JN39YTSUV")
     .then(
       function (response) {
         console.log(response);
