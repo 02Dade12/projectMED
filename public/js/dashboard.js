@@ -26,61 +26,43 @@ async function newSearchHandler(event) {
             console.log(response);
             location.reload();
           })
-        } else {return}
+        } else { return }
       }
     );
-};
+}
 // stockOverview("now");
 
-
-
-function dailySeries(stock) {
-  axios
-    .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + stock + "&apikey=" + process.env.API_KEY)
-
+async function newSearchHandlerTwo(event) {
+  event.preventDefault();
+  const searchText = document.querySelector('#search').value.trim();
+  await axios
+    .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + stock + "&apikey=" + "2V72ME51BOFXRYCJ")
     .then(
       function (response) {
-
-        console.log("-----------------------")
-        console.log(response.data);
-        console.log("-----------------------")
-        console.log(response.data["Global Quote"]["02. open"]);
-        console.log(response.data["Global Quote"]["03. high"]);
-        console.log(response.data["Global Quote"]["04. low"]);
-        console.log(response.data["Global Quote"]["05. price"]);
-        console.log("-----------------------")
-
-        let stockOpen = response.data["Global Quote"]["02. open"];
-        let stockHigh = response.data["Global Quote"]["03. high"];
-        let stockLow = response.data["Global Quote"]["04. low"];
-        let stockPrice = response.data["Global Quote"]["05. price"];
-
+        console.log(response);
+        if (response.data.Name) {
+          axios.post('/api/searches',
+            {
+              stock_open: response.data["Global Quote"]["02. open"],
+              stock_high: response.data["Global Quote"]["03. high"],
+              stock_low: response.data["Global Quote"]["04. low"],
+              stock_price: response.data["Global Quote"]["05. price"],
+            }
+          ).then(function (response) {
+            console.log(response);
+            location.reload();
+          })
+        } else { return }
       }
     );
-};
-
-const newDisplay = async => {
-  display.remove();
 }
 
-async function delButtonHandler(event) {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/searches/${id}`, {
-      method: 'DELETE',
-    });
 
-    if (response.ok) {
-      document.location.replace('/dashboard');
-    } else {
-      alert('Failed to delete searches');
-    }
-  }
-}
 
 form.addEventListener('submit', newSearchHandler);
-searchHist.addEventListener('click', newDisplay);
+form.addEventListener('submit', newSearchHandlerTwo);
+
 
 // document
 //   .querySelector('.project-list')
@@ -165,3 +147,51 @@ searchHist.addEventListener('click', newDisplay);
 // var stockhigh = '';
 // var stocklow = '';
 // var stockprice = '';
+
+
+async function delButtonHandler(event) {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/searches/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert('Failed to delete searches');
+    }
+  }
+}
+
+function dailySeries(stock) {
+  axios
+    .get("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + stock + "&apikey=" + process.env.API_KEY)
+
+    .then(
+      function (response) {
+
+        console.log("-----------------------")
+        console.log(response.data);
+        console.log("-----------------------")
+        console.log(response.data["Global Quote"]["02. open"]);
+        console.log(response.data["Global Quote"]["03. high"]);
+        console.log(response.data["Global Quote"]["04. low"]);
+        console.log(response.data["Global Quote"]["05. price"]);
+        console.log("-----------------------")
+
+        let stockOpen = response.data["Global Quote"]["02. open"];
+        let stockHigh = response.data["Global Quote"]["03. high"];
+        let stockLow = response.data["Global Quote"]["04. low"];
+        let stockPrice = response.data["Global Quote"]["05. price"];
+
+      }
+    );
+};
+
+
+
+const newDisplay = async => {
+  display.remove();
+}
