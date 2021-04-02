@@ -1,10 +1,9 @@
 <div class="app-dashboard shrink-medium">
     <div class="row expanded app-dashboard-top-nav-bar">
-        <form action="/api/searches" method="GET">
+        <form action="/api/searches" method="GET" id="search">
             <div class="columns medium-2">
                 {{!-- <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button> --}}
                 {{!-- <button type="submit" id="searchBtn" class="app-dashboard-logo"></button> --}}
-
             </div>
             <div class="columns show-for-medium">
                 <div class="app-dashboard-search-bar-container">
@@ -15,7 +14,6 @@
             </div>
         </form>
     </div>
-
     <div class="app-dashboard-body off-canvas-wrapper">
         <div id="app-dashboard-sidebar"
             class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium"
@@ -43,18 +41,14 @@
             </div>
             <div class="app-dashboard-sidebar-inner">
                 <ul class="menu vertical test">
-              
-
                     {{#each searches as |search|}}
                     <li><a href="#" class="is-active">
                             <span class="app-dashboard-sidebar-text" id="history">{{text}}</span>
                         </a></li>
                     {{/each}}
-   
                 </ul>
             </div>
         </div>
-
         <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
             <h2 class="text-center">{{name}}'s Dashboard</h2>
             <div id="res"></div>
@@ -75,10 +69,7 @@
                    <p id="stockPrice">Current Price</p>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
-
-<script src="/js/dashboard.js"></script>
+{{!-- <script src="/js/dashboard.js"></script> --}}
