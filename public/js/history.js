@@ -1,5 +1,3 @@
-// var stock = $(this).text();
-
 function call(stock) {
 
 
@@ -23,8 +21,6 @@ function call(stock) {
             let description = response.Description;
             let symbol = response.Symbol;
 
-            console.log(response);
-
             $.ajax({
                 url: queryURL2,
                 method: "GET"
@@ -32,10 +28,8 @@ function call(stock) {
             })
                 .then(function (response2) {
 
-                    console.log(response2);
-                    console.log(country);
 
-                    document.getElementById('res').insertAdjacentHTML("afterbegin",`
+                    document.getElementById('res').insertAdjacentHTML("afterbegin", `
                     <div class="card-info primary">
                     <div class="card-info-label">
                         <div class="card-info-label-text" id="stockSymbol">
@@ -52,44 +46,13 @@ function call(stock) {
                        <p id="stockLow">Today's Low: ${response2["Global Quote"]["04. low"]}</p>
                        <p id="stockPrice">Current Price: ${response2["Global Quote"]["05. price"]}</p>
                     </div>
-                </div>`) 
-                    
-                    // showOutput(symbol,name,country,exchange,description,response2);
+                </div>`)
+
+
 
                 })
         })
 };
-
-
-
-
-
-
-
-
-
-// function showOutput() {
-//     document.getElementById('res').innerHTML = `
-//     <div class="card-info primary">
-//     <div class="card-info-label">
-//         <div class="card-info-label-text" id="stockSymbol">
-//           ${symbol}
-//         </div>
-//     </div>
-//     <div class="card-info-content">
-//         <h3 class="lead" id="stockName">Company:${name}</h3>
-//        <p id="stockCountry">Country:${country}</p>
-//         <p id="stockSector">Exchange:${exchange}</p>
-//         <p id="stockDescription">Description:${description}</p>
-//        <p id="stockOpen">Today's Open Price:${response2["Global Quote"]["02. open"]}</p>
-//        <p id="stockHigh"> Today's High:${response2["Global Quote"]["03. high"]}</p>
-//        <p id="stockLow">Today's Low:${response2["Global Quote"]["04. low"]}</p>
-//        <p id="stockPrice">Current Price:${response2["Global Quote"]["05. price"]}</p>
-//     </div>
-// </div>`
-// }
-
-
 
 // Call API with elements with history id
 $(document).ready(function () {

@@ -1,6 +1,49 @@
 body{
 background-color: rgb(133, 112, 161);
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
 
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 /* #history {
   clear: right;
@@ -296,73 +339,6 @@ background-color: rgb(133, 112, 161);
 .large-article-header-content .article-author a {
   margin-left: 1rem;
 }
-
-
-/* .quote-inline-wrap-article-content {
-  max-width: 100%;
-  position: relative;
-  background-color: rgb(46, 46, 97);
-  color: #8a8a8a;
-  margin-top: 25px;
-}
-
-.quote-inline-wrap {
-  float: left;
-  max-width: 21.875rem;
-  padding: 0 1rem 1rem 0;
-}
-
-.quote-inline-wrap .quote-inline-marks {
-  font-size: 6.25rem;
- 
-  line-height: 1rem;
-}
-
-.quote-inline-wrap .quote-inline-testimonial {
-  border-radius: 5px;
-}
-
-.quote-inline-wrap .quote-inline-testimonial p {
-  font-weight: 300;
-}
-
-.quote-inline-wrap .quote-inline-person {
-  margin-bottom: 1.5rem;
-}
-
-.quote-inline-wrap .quote-inline-person .quote-inline-photo img {
-  border-radius: 50%;
-  width: 4.375rem;
-  height: 4.375rem;
-  float: left;
-  margin-right: 1rem;
-}
-
-.quote-inline-wrap .quote-inline-person p {
-  position: relative;
-  top: 5px;
-}
-
-.quote-inline-wrap .quote-inline-person p:nth-child(2) {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 0;
-}
-
-.quote-inline-wrap .quote-inline-person p:nth-child(3) {
-  font-size: 0.875rem;
-  font-weight: 400;
-
-}
-
-@media screen and (max-width: 63.9375em) {
-  .quote-inline-wrap {
-    width: 100%;
-    float: none;
-    display: block;
-  }
-} */
-
 
 .app-dashboard {
   height: 100vh;
