@@ -20,6 +20,7 @@ function call(stock) {
             let exchange = response.Exchange;
             let description = response.Description;
             let symbol = response.Symbol;
+            let sector = response.Sector;
 
             $.ajax({
                 url: queryURL2,
@@ -39,7 +40,8 @@ function call(stock) {
                     <div class="card-info-content">
                         <h3 class="lead" id="stockName">Company: ${name}</h3>
                        <p id="stockCountry">Country: ${country}</p>
-                        <p id="stockSector">Exchange: ${exchange}</p>
+                       <p id="stockSector">Sector: ${sector}</p>
+                        <p id="stockExchange">Exchange: ${exchange}</p>
                         <p id="stockDescription">Description: ${description}</p>
                        <p id="stockOpen">Today's Open Price: ${response2["Global Quote"]["02. open"]}</p>
                        <p id="stockHigh"> Today's High: ${response2["Global Quote"]["03. high"]}</p>
