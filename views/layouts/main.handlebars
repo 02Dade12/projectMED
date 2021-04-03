@@ -9,7 +9,7 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
     integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-   
+
 
   <!-- Compressed JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
@@ -20,55 +20,72 @@
 
 <body>
 
-      <nav class="top-bar topbar-responsive">
-        <div class="top-bar-title">
-          {{!-- <span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
-            <button class="menu-icon" type="button" data-toggle></button>
-          </span> --}}
-          <a class="topbar-responsive-logo" href="/"><strong>MED Stocks</strong></a>
-        </div>
-        <div id="topbar-responsive" class="topbar-responsive-links">
-          <div class="top-bar-right">
-            <ul class="menu simple vertical medium-horizontal">
-              <li><a href="/">Home</a></li>
-              {{#if logged_in}}
-              <li><a href="/dashboard">Dashboard</a> </li> 
-              <li><a id="logout">Logout</a></li>
-              {{else}}
-              <li> <a href="/login">Login</a></li>
-              {{/if}}
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <nav class="top-bar topbar-responsive">
+    <div class="top-bar-title">
+      <a class="topbar-responsive-logo" href="/"><strong>MED Stocks</strong></a>
+    </div>
+    <div id="topbar-responsive" class="topbar-responsive-links">
+      <div class="top-bar-right">
+        <ul class="menu simple vertical medium-horizontal">
+          <li><a href="/">Home</a></li>
+          {{#if logged_in}}
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Stockbrockers
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a style="color:darkslategray; margin: 10%;" target="blank_" href="https://www.fidelity.com/?bar=p">Fidelity</a>
+                <a style="color:darkslategray; margin: 10%;" target="blank_" href="https://robinhood.com/us/en/">Robinhood</a>
+                <a style="color:darkslategray; margin: 10%;" target="blank_" href="https://www.tdameritrade.com/home.page">TD Ameritrade</a>
+                <a style="color:darkslategray; margin: 10%;" target="blank_" href="https://us.etrade.com/home">E Trade</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="/dashboard">Dashboard</a> </li>
+          <li><a id="logout">Logout</a></li>
+          {{else}}
+          <li> <a href="/login">Login</a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    </header>
-    <main class="container">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-   
+  </header>
+  <main class="container">
+    <!-- Render the sub layout -->
+    {{{ body }}}
+  </main>
+
   </div>
 
   <footer class="social-footer">
-  <div class="social-footer-left">
-   <a href="https://github.com/02Dade12/projectMED"><img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-github-5.png&r=196&g=187&b=192" class="" height="40" width="40" alt="Github"></a>
-  </div>
-  <div class="social-footer-icons">
-    <ul class="menu simple">
-      {{!-- <p>MED Stocks was developed by Matthew Pirmal, Enrique Collazo and Darius Hay. Here is links to our other works.</p> --}}
-      <li><a href="https://github.com/mgpirmal" ><img src="https://ca.slack-edge.com/T01FJ9Z6NSD-U01FGMFLMTM-5464abc6d854-512" class="" height="40" width="40" alt="Matt Github"></a></li>
-      <li><a href="https://github.com/02Dade12" ><img src="https://ca.slack-edge.com/T01FJ9Z6NSD-U01FCBEFSAZ-d15c8fd85777-512" class="" height="40" width="40" alt="Enrique Github"></a></li>
-      <li><a href="https://github.com/DariusHay" ><img src="https://ca.slack-edge.com/T01FJ9Z6NSD-U01G6B7TQTA-94296224f35c-512" class="" height="40" width="40" alt="Darius Github"></a></li>
-    </ul>
-  </div>
-</footer>
+    <div class="social-footer-left">
+      <a href="https://github.com/02Dade12/projectMED"><img
+          src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-github-5.png&r=196&g=187&b=192"
+          class="" height="40" width="40" alt="Github"></a>
+    </div>
+    <div class="social-footer-icons">
+      <ul class="menu simple">
+        <li><a href="https://github.com/mgpirmal"><img
+              src="https://ca.slack-edge.com/T01FJ9Z6NSD-U01FGMFLMTM-5464abc6d854-512" class="" height="40" width="40"
+              alt="Matt Github"></a></li>
+        <li><a href="https://github.com/02Dade12"><img
+              src="https://ca.slack-edge.com/T01FJ9Z6NSD-U01FCBEFSAZ-d15c8fd85777-512" class="" height="40" width="40"
+              alt="Enrique Github"></a></li>
+        <li><a href="https://github.com/DariusHay"><img
+              src="https://ca.slack-edge.com/T01FJ9Z6NSD-U01G6B7TQTA-94296224f35c-512" class="" height="40" width="40"
+              alt="Darius Github"></a></li>
+      </ul>
+    </div>
+  </footer>
 
 
 
   <!-- Render script for logged in users only -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/history.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/js/history.js"></script>
 
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
