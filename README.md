@@ -1,7 +1,12 @@
 # Project 2: MED Stocks
 
 ## Description 
-An application for people who are just starting out in trading stocks. There are tons of models out their available for traders, this application is focused on providing key info for beginner traders.
+This application is for people who are just starting out in trading stocks. There are tons of models out their available for traders of all levels, this app is focused on providing key info for publicaly traded companies.
+
+### Created By:
+* [Matt Pirmal](https://github.com/mgpirmal)
+* [Enrique Collazo](https://github.com/02Dade12)
+* [Darius Hay](https://github.com/DariusHay)
 
 ## User story: 
 * User will sign up or login 
@@ -12,7 +17,7 @@ An application for people who are just starting out in trading stocks. There are
 
 ### [MED Stocks Preivew](https://medstocks.herokuapp.com/)
 
-![Dashboard Preview](dashboardpreview.png)
+![Dashboard Preview](dashboard.png)
 
 ## Technologies:
 ``` 
