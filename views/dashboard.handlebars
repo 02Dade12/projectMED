@@ -1,20 +1,25 @@
 <div class="app-dashboard shrink-medium">
     <div class="row expanded app-dashboard-top-nav-bar">
+<<<<<<< HEAD
         <form action="/api/searches" method="GET" id="search">
             <div class="columns medium-2">
                 {{!-- <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button> --}}
                 {{!-- <button type="submit" id="searchBtn" class="app-dashboard-logo"></button> --}}
+=======
+        <form style="margin: 5%;" class="form new-project-form">
+            <div class="columns medium-2">
+>>>>>>> 8b765246ca59193ab7c6ad25a696f60dac31da0a
             </div>
-            <div class="columns show-for-medium">
+            <div class="columns">
                 <div class="app-dashboard-search-bar-container">
                     <input name="stock" class="app-dashboard-search" type="text" placeholder="Search" id="search">
-                    {{!-- <button type="submit" class="primary button expanded search-button"></button> --}}
-                    {{!-- <i class="app-dashboard-search-icon fa fa-search"></i> --}}
+                    <button type="submit" class="primary button expanded search-button">Submit</button>
                 </div>
             </div>
         </form>
     </div>
     <div class="app-dashboard-body off-canvas-wrapper">
+        {{#if searches}}
         <div id="app-dashboard-sidebar"
             class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium"
             data-off-canvas>
@@ -40,36 +45,75 @@
                 </div>
             </div>
             <div class="app-dashboard-sidebar-inner">
+<<<<<<< HEAD
                 <ul class="menu vertical test">
+=======
+                <ul class="menu vertical">
+>>>>>>> 8b765246ca59193ab7c6ad25a696f60dac31da0a
                     {{#each searches as |search|}}
-                    <li><a href="#" class="is-active">
-                            <span class="app-dashboard-sidebar-text" id="history">{{text}}</span>
-                        </a></li>
+                    <li><a href="#" class="is-active" data-id="{{id}}">
+                            <span class="app-dashboard-sidebar-text" id="history">{{stock_symbol}}</span>
+                        </a>
+                    </li>
                     {{/each}}
+<<<<<<< HEAD
                 </ul>
             </div>
         </div>
+=======
+                    
+                   <li><button class=" app-dashboard-sidebar-text button delete-button" data-id="{{id}}">Delete Searches</button></li> 
+                    
+                </ul>
+            </div>
+        </div>
+        {{/if}}
+>>>>>>> 8b765246ca59193ab7c6ad25a696f60dac31da0a
         <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
             <h2 class="text-center">{{name}}'s Dashboard</h2>
             <div id="res"></div>
-            <div class="card-info success">
+            {{#unless searches}}
+            <div class="card-info success absolute-center">
                 <div class="card-info-label">
                     <div class="card-info-label-text" id="stockSymbol">
-                      Ticker
+                        Hello
                     </div>
                 </div>
                 <div class="card-info-content">
-                    <h3 class="lead" id="stockName">Company</h3>
-                   <p id="stockCountry">Country</p>
-                    <p id="stockSector">Exchange</p>
-                    <p id="stockDescription">Description</p>
-                   <p id="stockOpen">Today's Open Price</p>
-                   <p id="stockHigh"> Today's High</p>
-                   <p id="stockLow">Today's Low</p>
-                   <p id="stockPrice">Current Price</p>
+                    <h3 class="lead" id="stockName">Search a stock</h3>
                 </div>
             </div>
+            {{/unless}}
+            {{#if searches}}
+            {{#each searches as |search|}}
+            <div class="card-info success">
+                <div class="card-info-label">
+                    <div class="card-info-label-text" id="stockSymbol">
+                        {{stock_symbol}}
+                    </div>
+                </div>
+                <div class="card-info-content">
+                    <h3 class="lead" id="stockName">Company: {{stock_name}}</h3>
+                    <p id="stockCountry">Country: {{stock_country}}</p>
+                    <p id="stockSector">Sector: {{stock_sector}}</p>
+                    <p id="stockExchange">Exchange: {{stock_exchange}}</p>
+                    <p id="stockDescription">Description: {{stock_description}}</p>
+                    <p id="stockOpen">Today's Open Price: {{stock_open}}</p>
+                    <p id="stockHigh"> Today's High: {{stock_high}}</p>
+                    <p id="stockLow">Today's Low: {{stock_low}}</p>
+                    <p id="stockPrice">Current Price: {{stock_price}}</p>
+                </div>
+            </div>
+<<<<<<< HEAD
         </div>
     </div>
 </div>
 {{!-- <script src="/js/dashboard.js"></script> --}}
+=======
+            {{/each}}
+            {{/if}}
+        </div>
+    </div>
+</div>
+<script src="/js/dashboard.js"></script>
+>>>>>>> 8b765246ca59193ab7c6ad25a696f60dac31da0a

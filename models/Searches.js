@@ -11,9 +11,45 @@ Searches.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        text: {
+        stock_name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+        },
+        stock_symbol: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        stock_country: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        stock_sector: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        stock_exchange: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        stock_description: {
+            type: DataTypes.STRING(10000),
+            allowNull: true,
+        },
+        stock_open: {
+            type: DataTypes.DECIMAL(10, 4),
+            allowNull: true,
+        },
+        stock_high: {
+            type: DataTypes.DECIMAL(10, 4),
+            allowNull: true,
+        },
+        stock_low: {
+            type: DataTypes.DECIMAL(10, 4),
+            allowNull: true,
+        },
+        stock_price: {
+            type: DataTypes.DECIMAL(10, 4),
+            allowNull: true,
         },
         date_created: {
             type: DataTypes.DATE,
