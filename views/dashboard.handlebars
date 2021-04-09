@@ -1,14 +1,7 @@
 <div class="app-dashboard shrink-medium">
     <div class="row expanded app-dashboard-top-nav-bar">
-<<<<<<< HEAD
-        <form action="/api/searches" method="GET" id="search">
-            <div class="columns medium-2">
-                {{!-- <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button> --}}
-                {{!-- <button type="submit" id="searchBtn" class="app-dashboard-logo"></button> --}}
-=======
         <form style="margin: 5%;" class="form new-project-form">
             <div class="columns medium-2">
->>>>>>> 8b765246ca59193ab7c6ad25a696f60dac31da0a
             </div>
             <div class="columns">
                 <div class="app-dashboard-search-bar-container">
@@ -45,22 +38,13 @@
                 </div>
             </div>
             <div class="app-dashboard-sidebar-inner">
-<<<<<<< HEAD
-                <ul class="menu vertical test">
-=======
                 <ul class="menu vertical">
->>>>>>> 8b765246ca59193ab7c6ad25a696f60dac31da0a
                     {{#each searches as |search|}}
                     <li><a href="#" class="is-active" data-id="{{id}}">
                             <span class="app-dashboard-sidebar-text" id="history">{{stock_symbol}}</span>
                         </a>
                     </li>
                     {{/each}}
-<<<<<<< HEAD
-                </ul>
-            </div>
-        </div>
-=======
                     
                    <li><button class=" app-dashboard-sidebar-text button delete-button" data-id="{{id}}">Delete Searches</button></li> 
                     
@@ -68,7 +52,6 @@
             </div>
         </div>
         {{/if}}
->>>>>>> 8b765246ca59193ab7c6ad25a696f60dac31da0a
         <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
             <h2 class="text-center">{{name}}'s Dashboard</h2>
             <div id="res"></div>
@@ -104,16 +87,9 @@
                     <p id="stockPrice">Current Price: {{stock_price}}</p>
                 </div>
             </div>
-<<<<<<< HEAD
-        </div>
-    </div>
-</div>
-{{!-- <script src="/js/dashboard.js"></script> --}}
-=======
             {{/each}}
             {{/if}}
         </div>
     </div>
 </div>
 <script src="/js/dashboard.js"></script>
->>>>>>> 8b765246ca59193ab7c6ad25a696f60dac31da0a
